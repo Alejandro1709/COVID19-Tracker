@@ -12,7 +12,7 @@ import './App.css';
 
 function App() {
   const [countries, setCountries] = useState(['USA', 'UK', 'PERU', 'ITALY']);
-  const [country, setCountry] = useState('Worldwide');
+  const [country, setCountry] = useState('worldwide');
   const [countryInfo, setCountryInfo] = useState({});
 
   useEffect(() => {
@@ -37,7 +37,7 @@ function App() {
     const url =
       countryCode === 'worldwide'
         ? 'https://disease.sh/v3/covid-19/all'
-        : `https://disease.sh/v3/covid-19/${countryCode}`;
+        : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
 
     await fetch(url)
       .then((res) => res.json())
@@ -61,7 +61,7 @@ function App() {
               value={country}
               onChange={onCountryChange}
             >
-              <MenuItem value="Worldwide">Worldwide</MenuItem>
+              <MenuItem value="worldwide">Worldwide</MenuItem>
               {countries.map((country) => (
                 <MenuItem key={country.name} value={country.value}>
                   {country.name}
